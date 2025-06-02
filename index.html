@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pengumuman Kelulusan - SD Negeri 1 Rumahtiga</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f4f7;
+      text-align: center;
+      padding: 40px;
+    }
+    .container {
+      background: white;
+      padding: 30px;
+      max-width: 500px;
+      margin: 0 auto;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    h1, h2 {
+      color: #2c3e50;
+    }
+    input[type="text"] {
+      padding: 10px;
+      width: 80%;
+      margin: 10px 0;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background: #2980b9;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #1c5980;
+    }
+    .result {
+      margin-top: 20px;
+      font-size: 18px;
+    }
+    .success {
+      color: green;
+      font-weight: bold;
+    }
+    .error {
+      color: red;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Pengumuman Kelulusan</h1>
+    <h2>SD Negeri 1 Rumahtiga</h2>
+    <p>Kecamatan Teluk Ambon<br>
+    Tahun Pelajaran 2024/2025</p>
+    <p><strong>Senin, 2 Juni 2025</strong></p>
+
+    <div>
+      <p>Masukkan NISN untuk melihat hasil kelulusan:</p>
+      <input type="text" id="nisnInput" placeholder="Masukkan NISN" />
+      <br />
+      <button onclick="cekKelulusan()">Lihat Hasil</button>
+      <div id="hasil" class="result"></div>
+    </div>
+  </div>
+
+  <script>
+    const dataSiswa = {
+      "0137073910": ["ADONIA MEITHY RISAMASU", "LULUS"],
+      "0138804371": ["ADRIEL PATTIPEILOHY", "LULUS"],
+      "3122259538": ["ADVLIMS HUWAE", "LULUS"],
+      "3134393449": ["ALL FRANK EINSTEIN TEFTUTUL", "LULUS"],
+      "0138681093": ["ANGGA SYAPUTRA", "LULUS"],
+      "0138092738": ["ARJEN JESMENDO SALAKORY", "LULUS"],
+      "3134953423": ["ASSIFA RAMADHANI BABA", "LULUS"],
+      "3146650932": ["Azzahra Putri Supanto", "LULUS"],
+      "0138994925": ["BENEDICT KERMITE", "LULUS"],
+      "3122695030": ["BRYAN RUBEN WARBANARAN", "LULUS"],
+      "3058360958": ["CHRISANDO ANTHONIO KALAY", "LULUS"],
+      "0135231970": ["CHRISTABELL LELLY MASPAITELLA", "LULUS"],
+      "3123736944": ["DAZTAN BAHASOAN", "LULUS"],
+      "3131521022": ["EXCELCEO   LEUHERY", "LULUS"],
+      "3131943062": ["FEBRYAND SYLVESTER TATIPATTA", "LULUS"],
+      "0122739836": ["FELISTIA SHARON NUNUMETE", "LULUS"],
+      "3132250243": ["G.S RICHELLE  MACKENZIE LAIPORA", "LULUS"],
+      "3138471314": ["GIVEN DOMINIQUE ADRIELLA KAKISINA", "LULUS"],
+      "3133858713": ["IMANUEL CLEVER SOLEHUWEI", "LULUS"],
+      "3123151530": ["IMANUEL INIESTA TAREHY", "LULUS"],
+      "3137378061": ["JANES CHARLY HAUMAHU", "LULUS"],
+      "0131803967": ["JOSHUA  BALTAZAR LEREBULAN", "LULUS"],
+      "0123830739": ["Kevin Attila Santosa", "LULUS"],
+      "0135319388": ["MARIA LIDYA PIETERSZ", "LULUS"],
+      "0138102933": ["MIKHA  JEAN PATRECIA DAKDAKUR", "LULUS"],
+      "3133406534": ["MOHAMMAD JIO SLAMAT", "LULUS"],
+      "3131177866": ["MOIRA DAPHNE CHANDELLE SIAHAYA", "LULUS"],
+      "3133863873": ["MUHAMMAD AKHTAR SAPUTRA", "LULUS"],
+      "3121453175": ["NAFEEZA CHELSEA SIAHAYA", "LULUS"],
+      "0137268775": ["RESKHY HEHAKAYA", "LULUS"],
+      "3136028550": ["SMITH WAISAPY", "LULUS"],
+      "3128291987": ["Stevany Prilya Telussa", "LULUS"],
+      "3127244246": ["STONER JEAMS PATTINAMA", "LULUS"],
+      "3133144087": ["TANELIA MEISYOR FILINDITY", "LULUS"],
+      "3116397339": ["ZAKI RAHMAN NIRWAN", "LULUS"]
+    };
+
+    function cekKelulusan() {
+      const nisn = document.getElementById("nisnInput").value.trim();
+      const hasilDiv = document.getElementById("hasil");
+
+      if (dataSiswa[nisn]) {
+        const [nama, status] = dataSiswa[nisn];
+        hasilDiv.innerHTML = `
+          <p>Nama: <strong>${nama}</strong></p>
+          <p class="success">Keterangan: ${status}</p>
+        `;
+      } else {
+        hasilDiv.innerHTML = `<p class="error">NISN tidak ditemukan. Silakan periksa kembali.</p>`;
+      }
+    }
+  </script>
+</body>
+</html>
